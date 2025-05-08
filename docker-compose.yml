@@ -3,8 +3,6 @@ services:
           build: ./client
           container_name: frontend
           restart: always
-          volumes:
-               - ./client/dist:/usr/share/nginx/html # Static frontend files
           depends_on:
                - backend
           networks:
@@ -44,7 +42,7 @@ services:
                - "80:80"
           volumes:
                - ./nginx/nginx.conf:/etc/nginx/nginx.conf # Link Nginx config
-               - ./client/dist:/usr/share/nginx/html # Static files for frontend
+               # - ./client/dist:/usr/share/nginx/html # Static files for frontend
           depends_on:
                - frontend
                - backend
